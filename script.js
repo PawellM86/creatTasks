@@ -7,12 +7,12 @@
         //insert tasks in array and show it
         var tasksArr = [];
         var btn2 = document.querySelector('#send');
+
         btn2.addEventListener('click', function() {
         event.preventDefault();
-
         var tasks = document.querySelector('#txtarea').value;
-
         tasksArr.unshift(tasks);
+        document.querySelector('#txtarea').value="";
 
     for( var i = 0; i < tasksArr.length; i++ );
         var button = document.createElement("button");
@@ -33,6 +33,7 @@
 
 
         var newElement = document.createElement("li");
+        newElement.setAttribute("name", "listTask");
         var textnode = document.createTextNode("Užduotis nr " + i +": " + tasksArr[0]);
         var ul = document.getElementById("testing");
 
@@ -46,20 +47,19 @@
         //delete button
         button1.addEventListener('click', function() {
           newElement.remove();
-          button.remove(ul.appendChild(button).appendChild(btntxt));
-          button1.remove(ul.appendChild(button1).appendChild(btntxt1));
-          button2.remove(ul.appendChild(button2).appendChild(btntxt2));
-
+          button.remove();
+          button1.remove();
+          button2.remove();
+          newInput.remove();
+          newButton.remove();
         })
 
         //edit button
         button.addEventListener('click', function() {
           newInput.value = tasksArr[0];
-
           newButton.addEventListener('click', function(){
           newElement.innerHTML = "Užduotis nr: " + i +" " +newInput.value;
-          newButton.remove(ul.appendChild(newButton).appendChild(btntxt3));
-          newInput.remove();
+
           })
 
         })
